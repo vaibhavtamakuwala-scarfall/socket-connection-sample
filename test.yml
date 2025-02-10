@@ -1,0 +1,16 @@
+config:
+  target: "ws://localhost:4000" # Replace with your server URL
+  phases:
+    - duration: 60 # seconds
+      arrivalRate: 17  # Number of connections per second
+  engines:
+    socketio-v3: {}
+scenarios:
+  - name: "Load Test with N Connections"
+    engine: "socketio-v3"
+    flow:
+      - think: 1 # Simulate a 1-second think time before emitting the message
+      - emit:
+          channel: "client-to-server"
+          # data: "hello"
+      - think: 3 # Simulate a 3-second think time after emitting the message
