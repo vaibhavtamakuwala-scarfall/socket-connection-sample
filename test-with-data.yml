@@ -1,0 +1,23 @@
+config:
+  target: "http://localhost:4000" # Replace with your server URL
+  phases:
+    - duration: 60 # seconds
+      arrivalRate: 17  # Number of connections per second
+  engines:
+    socketio-v3: {}
+  ## Uncomment if you need to pass data in query params.
+  # socketio:
+  #   query: 'user_id=0xc0ffee'
+scenarios:
+  - name: "Load Test with N Connections"
+    engine: "socketio-v3"
+    flow:
+      - think: 1 # Simulate a 1-second think time before emitting the message(optional)
+      - emit:
+          channel: "send-event"
+          data: "e1a17f98a34b26d30b1acdb773819dd6" # pass any data you want.
+          ## For object type data:
+          # data:
+          #   message: "userId"
+          #   userId: "h476f7467bfg7vdhh"
+      - think: 30 # Simulate a 3-second think time after emitting the message

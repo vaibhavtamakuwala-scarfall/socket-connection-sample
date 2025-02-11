@@ -5,7 +5,10 @@ Install dependencies
 Run project
 ```npm start```
 
-Perform load tesing
+Perform load testing
 ```npx artillery run test.yml --output report.json```
+
+Perform load testing with data
+```npx artillery run test-with-data.yml --output report-with-data.json```
 
 Check ``report.json`` for testing report.
